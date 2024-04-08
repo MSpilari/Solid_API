@@ -14,7 +14,10 @@ class RestaurantService implements IRestaurantService {
 		return allRestaurantsService
 	}
 
-	addNewRestaurantService = async () => {}
+	addNewRestaurant = async (userInput: Restaurant) => {
+		const newRestaurant = await this.restaurantRepo.save(userInput)
+		return newRestaurant
+	}
 }
 
 export { RestaurantService }
