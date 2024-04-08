@@ -18,6 +18,13 @@ class RestaurantService implements IRestaurantService {
 		const newRestaurant = await this.restaurantRepo.save(userInput)
 		return newRestaurant
 	}
+
+	getSingleRestaurant = async (restaurantId: string) => {
+		const restaurant = await this.restaurantRepo.findOne({
+			where: { id: Number(restaurantId) }
+		})
+		return restaurant
+	}
 }
 
 export { RestaurantService }
