@@ -1,9 +1,6 @@
 import { Repository } from 'typeorm'
 import { Restaurant } from '../entities/restaurant'
-
-interface IRestaurantService {
-	listAllRestaurants(): Promise<Restaurant[]>
-}
+import { IRestaurantService } from '../dto/RestaurantService.types'
 
 class RestaurantService implements IRestaurantService {
 	private restaurantRepo: Repository<Restaurant>
@@ -20,4 +17,4 @@ class RestaurantService implements IRestaurantService {
 	addNewRestaurantService = async () => {}
 }
 
-export { RestaurantService, IRestaurantService }
+export { RestaurantService }
