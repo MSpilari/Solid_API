@@ -6,14 +6,14 @@ import { InputValidator } from './helpers/inputValidator'
 import { restaurantSchema } from './joiSchemas/restaurantSchema.joi'
 
 const newRestaurantService = new RestaurantService(restaurantRepository)
-const { getAllRestaurants, setNewRestaurant } = new RestaurantController(
-	newRestaurantService
-)
+const { getAllRestaurants, setNewRestaurant, getRestaurant } =
+	new RestaurantController(newRestaurantService)
 const { restaurantValidator } = new InputValidator(restaurantSchema)
 
 const router = express.Router()
 
 router.get('/allrestaurants', getAllRestaurants)
 router.post('/newrestaurant', restaurantValidator, setNewRestaurant)
+router.get('/restaurant/:id', getRestaurant)
 
 export { router }
