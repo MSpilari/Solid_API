@@ -27,11 +27,6 @@ export class Product {
 	@Column()
 	daysOfPromo: string
 
-	@ManyToOne(
-		() => Restaurant,
-		restaurant => {
-			restaurant.products
-		}
-	)
+	@ManyToOne(() => Restaurant, restaurant => restaurant.products)
 	restaurant: Restaurant
 }
