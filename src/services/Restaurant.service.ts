@@ -47,6 +47,20 @@ class RestaurantService implements IRestaurantService {
 
 		return newRestaurant
 	}
+
+	deleteARestaurant = async (restaurantId: string) => {
+		const isValid = await this.restaurantRepo.exists({
+			where: { id: Number(restaurantId) }
+		})
+
+		if (!isValid) throw new Error('ID not found')
+
+		await this.restaurantRepo.delete({
+			id: Number(restaurantId)
+		})
+
+		return { success: `The Restaurant with ${restaurantId} was deleted` }
+	}
 }
 
 export { RestaurantService }

@@ -1,4 +1,4 @@
-import { UpdateResult } from 'typeorm'
+import { DeleteResult } from 'typeorm'
 import { Restaurant } from '../entities/restaurant'
 
 interface IRestaurantService {
@@ -9,6 +9,7 @@ interface IRestaurantService {
 		restaurantId: string,
 		userInput: Restaurant
 	): Promise<Restaurant | null>
+	deleteARestaurant(restaurantId: string): Promise<{ success: string } | null>
 }
 
 export { IRestaurantService }
