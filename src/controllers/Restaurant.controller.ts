@@ -40,7 +40,6 @@ class RestaurantController {
 		try {
 			const { id } = req.params
 			const restaurant = await this.restaurantService.getSingleRestaurant(id)
-			if (!restaurant) throw new Error()
 			return res.status(200).json(restaurant)
 		} catch (error) {
 			next(error)

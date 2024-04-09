@@ -23,6 +23,9 @@ class RestaurantService implements IRestaurantService {
 		const restaurant = await this.restaurantRepo.findOne({
 			where: { id: Number(restaurantId) }
 		})
+
+		if (!restaurant) throw new Error('ID not found')
+
 		return restaurant
 	}
 }
