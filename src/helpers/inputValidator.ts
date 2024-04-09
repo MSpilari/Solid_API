@@ -8,11 +8,7 @@ class InputValidator {
 		this.schema = schema
 	}
 
-	restaurantValidator = async (
-		req: Request,
-		res: Response,
-		next: NextFunction
-	) => {
+	inputValidator = async (req: Request, res: Response, next: NextFunction) => {
 		const userInput = req.body
 
 		try {
