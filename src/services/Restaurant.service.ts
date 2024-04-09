@@ -28,6 +28,25 @@ class RestaurantService implements IRestaurantService {
 
 		return restaurant
 	}
+
+	updateFieldsRestaurant = async (
+		restaurantId: string,
+		userInput: Restaurant
+	) => {
+		const restaurant = await this.restaurantRepo.exists({
+			where: { id: Number(restaurantId) }
+		})
+
+		if (!restaurant) throw new Error('ID not found')
+
+		await this.restaurantRepo.update(restaurantId, userInput)
+
+		const newRestaurant = await this.restaurantRepo.findOne({
+			where: { id: Number(restaurantId) }
+		})
+
+		return newRestaurant
+	}
 }
 
 export { RestaurantService }
