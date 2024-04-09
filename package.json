@@ -4,7 +4,7 @@
 	"main": "index.js",
 	"license": "MIT",
 	"scripts": {
-		"dev": "set NODE_ENV=development && ts-node-dev src/index.ts",
+		"dev": "set NODE_ENV=development && ts-node-dev --transpile-only src/index.ts",
 		"migration:generate-dev": "typeorm-ts-node-commonjs migration:generate -d src/database/connection.ts src/database/migrations/test",
 		"migration:run": "typeorm-ts-node-commonjs migration:run -d src/database/connection.ts"
 	},
