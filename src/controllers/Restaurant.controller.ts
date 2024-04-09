@@ -65,6 +65,24 @@ class RestaurantController {
 			next(error)
 		}
 	}
+
+	deleteRestaurant = async (
+		req: Request,
+		res: Response,
+		next: NextFunction
+	) => {
+		try {
+			const { id } = req.params
+
+			const deletedRestaurant = await this.restaurantService.deleteARestaurant(
+				id
+			)
+
+			return res.status(204).json(deletedRestaurant)
+		} catch (error) {
+			next(error)
+		}
+	}
 }
 
 export { RestaurantController }
