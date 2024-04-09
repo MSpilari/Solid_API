@@ -10,7 +10,9 @@ class RestaurantService implements IRestaurantService {
 	}
 
 	listAllRestaurants = async (): Promise<Restaurant[]> => {
-		const allRestaurantsService = await this.restaurantRepo.find()
+		const allRestaurantsService = await this.restaurantRepo.find({
+			relations: ['products']
+		})
 		return allRestaurantsService
 	}
 
