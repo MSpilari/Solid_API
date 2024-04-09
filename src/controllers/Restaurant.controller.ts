@@ -45,6 +45,26 @@ class RestaurantController {
 			next(error)
 		}
 	}
+
+	updateRestaurant = async (
+		req: Request,
+		res: Response,
+		next: NextFunction
+	) => {
+		try {
+			const { id } = req.params
+			const userInput = req.body
+
+			const restaurant = await this.restaurantService.updateFieldsRestaurant(
+				id,
+				userInput
+			)
+
+			return res.status(201).json(restaurant)
+		} catch (error) {
+			next(error)
+		}
+	}
 }
 
 export { RestaurantController }
