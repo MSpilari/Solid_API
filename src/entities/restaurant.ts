@@ -18,11 +18,6 @@ export class Restaurant {
 	@Column()
 	workHour: string
 
-	@OneToMany(
-		() => Product,
-		product => {
-			product.restaurant
-		}
-	)
+	@OneToMany(() => Product, product => product.restaurant)
 	products: Product[]
 }
