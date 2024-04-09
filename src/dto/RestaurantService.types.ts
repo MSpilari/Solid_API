@@ -1,4 +1,3 @@
-import { DeleteResult } from 'typeorm'
 import { Restaurant } from '../entities/restaurant'
 
 interface IRestaurantService {
