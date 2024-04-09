@@ -8,8 +8,13 @@ import { restaurantSchema } from './joiSchemas/restaurantSchema.joi'
 const { restaurantValidator } = new InputValidator(restaurantSchema)
 
 const newRestaurantService = new RestaurantService(restaurantRepository)
-const { getAllRestaurants, setNewRestaurant, getRestaurant, updateRestaurant } =
-	new RestaurantController(newRestaurantService)
+const {
+	getAllRestaurants,
+	setNewRestaurant,
+	getRestaurant,
+	updateRestaurant,
+	deleteRestaurant
+} = new RestaurantController(newRestaurantService)
 
 const router = express.Router()
 
@@ -17,5 +22,6 @@ router.get('/allrestaurants', getAllRestaurants)
 router.post('/newrestaurant', restaurantValidator, setNewRestaurant)
 router.get('/restaurant/:id', getRestaurant)
 router.put('/restaurant/:id', restaurantValidator, updateRestaurant)
+router.delete('/restaurant/:id', deleteRestaurant)
 
 export { router }
