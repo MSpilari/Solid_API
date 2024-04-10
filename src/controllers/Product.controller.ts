@@ -47,6 +47,18 @@ class ProductController {
 			next(error)
 		}
 	}
+
+	deleteProduct = async (req: Request, res: Response, next: NextFunction) => {
+		try {
+			const { id } = req.params
+
+			const deletedProduct = await this.productService.deleteAProduct(id)
+
+			return res.status(200).json(deletedProduct)
+		} catch (error) {
+			next(error)
+		}
+	}
 }
 
 export { ProductController }
