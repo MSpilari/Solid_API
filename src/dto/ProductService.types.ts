@@ -5,6 +5,10 @@ interface IProductService {
 	productsFromRestaurant(
 		restaurantId: string
 	): Promise<Product[] | null | undefined>
+	updateFieldsProduct(
+		productId: string,
+		userInput: Product
+	): Promise<Product | null>
 }
 
 export { IProductService }
