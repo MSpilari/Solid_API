@@ -12,6 +12,13 @@ class ProductService {
 		const newProduct = await this.productRepo.save(userInput)
 		return newProduct
 	}
+
+	productsFromRestaurant = async (restaurantId: string) => {
+		const newProduct = await this.productRepo.find({
+			where: { restaurant: { id: Number(restaurantId) } }
+		})
+		return newProduct
+	}
 }
 
 export { ProductService }
