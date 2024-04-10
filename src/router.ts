@@ -19,8 +19,12 @@ const {
 } = new RestaurantController(newRestaurantService)
 
 const newProductService = new ProductService(productRepository)
-const { setNewProduct, getProductsFromRestaurant, updateProduct } =
-	new ProductController(newProductService)
+const {
+	setNewProduct,
+	getProductsFromRestaurant,
+	updateProduct,
+	deleteProduct
+} = new ProductController(newProductService)
 
 const router = express.Router()
 
@@ -47,5 +51,7 @@ router.post('/newproduct', inputValidator(ProductSchema), setNewProduct)
 router.get('/product/:id', getProductsFromRestaurant)
 
 router.put('/product/:id', inputValidator(ProductSchema), updateProduct)
+
+router.delete('/product/:id', deleteProduct)
 
 export { router }
