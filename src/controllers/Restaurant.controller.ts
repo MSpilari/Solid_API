@@ -78,7 +78,7 @@ class RestaurantController {
 				id
 			)
 
-			return res.status(204).json(deletedRestaurant)
+			return res.status(200).json(deletedRestaurant)
 		} catch (error) {
 			next(error)
 		}
