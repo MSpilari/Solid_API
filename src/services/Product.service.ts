@@ -35,6 +35,20 @@ class ProductService {
 
 		return newProduct
 	}
+
+	deleteAProduct = async (productId: string) => {
+		const isValid = await this.productRepo.exists({
+			where: { id: Number(productId) }
+		})
+
+		if (!isValid) throw new Error('ID not found')
+
+		await this.productRepo.delete({
+			id: Number(productId)
+		})
+
+		return { success: `The Product with ${productId} was deleted` }
+	}
 }
 
 export { ProductService }

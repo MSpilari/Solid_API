@@ -9,6 +9,7 @@ interface IProductService {
 		productId: string,
 		userInput: Product
 	): Promise<Product | null>
+	deleteAProduct(productId: string): Promise<{ success: string }>
 }
 
 export { IProductService }
