@@ -31,6 +31,22 @@ class ProductController {
 			next(error)
 		}
 	}
+
+	updateProduct = async (req: Request, res: Response, next: NextFunction) => {
+		try {
+			const { id } = req.params
+			const userInput = req.body
+
+			const product = await this.productService.updateFieldsProduct(
+				id,
+				userInput
+			)
+
+			return res.status(200).json(product)
+		} catch (error) {
+			next(error)
+		}
+	}
 }
 
 export { ProductController }
