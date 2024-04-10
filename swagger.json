@@ -1,0 +1,23 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "Restaurants and Products API",
+		"description": "An Api that uses Postgres, TypeOrm and Express, that the user can register a restaurant and products from those.",
+		"version": "1.0.0"
+	},
+	"servers": [
+		{
+			"url": "http://localhost:3333",
+			"description": "Test URL"
+		}
+	],
+	"paths": {
+		"/allrestaurants": {
+			"get": {
+				"summary": "A list of restaurants ",
+				"description": "Returns a list of restaurants with their products",
+				"tags": ["Restaurants"]
+			}
+		}
+	}
+}
