@@ -1,4 +1,5 @@
 import express from 'express'
+import swagger from 'swagger-ui-express'
 import { RestaurantController } from './controllers/Restaurant.controller'
 import { RestaurantService } from './services/Restaurant.service'
 import { restaurantRepository } from './repositories/restaurantRepo'
@@ -8,6 +9,7 @@ import { ProductService } from './services/Product.service'
 import { productRepository } from './repositories/productRepo'
 import { ProductController } from './controllers/Product.controller'
 import { ProductSchema } from './joiSchemas/productSchema.joi'
+import swaggerJson from '../swagger.json'
 
 const newRestaurantService = new RestaurantService(restaurantRepository)
 const {
@@ -27,6 +29,8 @@ const {
 } = new ProductController(newProductService)
 
 const router = express.Router()
+
+router.use('/api-docs', swagger.serve, swagger.setup(swaggerJson))
 
 router.get('/allrestaurants', getAllRestaurants)
 
