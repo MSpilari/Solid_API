@@ -1,6 +1,7 @@
 import { Repository } from 'typeorm'
 import { Restaurant } from '../entities/restaurant'
 import { IRestaurantService } from '../dto/RestaurantService.types'
+import { CustomErrorHandler } from '../helpers/customErrorHandler'
 
 class RestaurantService implements IRestaurantService {
 	private restaurantRepo: Repository<Restaurant>
@@ -26,7 +27,7 @@ class RestaurantService implements IRestaurantService {
 			where: { id: Number(restaurantId) }
 		})
 
-		if (!restaurant) throw new Error('ID not found')
+		if (!restaurant) throw new CustomErrorHandler(400, 'ID not found')
 
 		return restaurant
 	}
@@ -39,7 +40,7 @@ class RestaurantService implements IRestaurantService {
 			where: { id: Number(restaurantId) }
 		})
 
-		if (!restaurant) throw new Error('ID not found')
+		if (!restaurant) throw new CustomErrorHandler(400, 'ID not found')
 
 		await this.restaurantRepo.update(restaurantId, userInput)
 
@@ -55,7 +56,7 @@ class RestaurantService implements IRestaurantService {
 			where: { id: Number(restaurantId) }
 		})
 
-		if (!isValid) throw new Error('ID not found')
+		if (!isValid) throw new CustomErrorHandler(400, 'ID not found')
 
 		await this.restaurantRepo.delete({
 			id: Number(restaurantId)

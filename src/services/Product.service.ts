@@ -1,5 +1,6 @@
 import { Repository } from 'typeorm'
 import { Product } from '../entities/product'
+import { CustomErrorHandler } from '../helpers/customErrorHandler'
 
 class ProductService {
 	private productRepo: Repository<Product>
@@ -25,7 +26,7 @@ class ProductService {
 			where: { id: Number(productId) }
 		})
 
-		if (!product) throw new Error('ID not found')
+		if (!product) throw new CustomErrorHandler(400, 'ID not found')
 
 		await this.productRepo.update(productId, userInput)
 
@@ -41,7 +42,7 @@ class ProductService {
 			where: { id: Number(productId) }
 		})
 
-		if (!isValid) throw new Error('ID not found')
+		if (!isValid) throw new CustomErrorHandler(400, 'ID not found')
 
 		await this.productRepo.delete({
 			id: Number(productId)
