@@ -6,7 +6,9 @@
 	"scripts": {
 		"dev": "set NODE_ENV=development && ts-node-dev --transpile-only src/index.ts",
 		"migration:generate-dev": "typeorm-ts-node-commonjs migration:generate -d src/database/connection.ts src/database/migrations/test",
-		"migration:run": "typeorm-ts-node-commonjs migration:run -d src/database/connection.ts"
+		"migration:run": "typeorm-ts-node-commonjs migration:run -d src/database/connection.ts",
+		"test": "vitest",
+		"coverage": "vitest run --coverage"
 	},
 	"resolutions": {
 		"@types/mime": "3.0.4"
@@ -28,6 +30,7 @@
 		"swagger-autogen": "^2.23.7",
 		"ts-node": "^10.9.2",
 		"ts-node-dev": "^2.0.0",
-		"typescript": "^5.4.3"
+		"typescript": "^5.4.3",
+		"vitest": "^1.5.0"
 	}
 }
