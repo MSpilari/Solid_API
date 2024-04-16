@@ -20,7 +20,6 @@ const myDataSource = new DataSource({
 const establishingConnectionWithDB = async () => {
 	try {
 		if (!myDataSource.isInitialized) await myDataSource.initialize()
-
 		return console.log(`DB ${process.env.NODE_ENV} is connected...`)
 	} catch (err) {
 		return console.log('Failed to connected to DB due to : ', err)
