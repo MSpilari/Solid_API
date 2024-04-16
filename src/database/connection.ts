@@ -5,7 +5,8 @@ import { Restaurant } from '../entities/restaurant'
 
 dotenv.config()
 
-const DB_URL = process.env.DB_URL
+const DB_URL =
+	process.env.NODE_ENV === 'test' ? process.env.DB_TEST_URL : process.env.DB_URL
 
 const myDataSource = new DataSource({
 	type: 'postgres',
@@ -18,8 +19,9 @@ const myDataSource = new DataSource({
 
 const establishingConnectionWithDB = async () => {
 	try {
-		await myDataSource.initialize()
-		return console.log('DB is connected...')
+		if (!myDataSource.isInitialized) await myDataSource.initialize()
+
+		return console.log(`DB ${process.env.NODE_ENV} is connected...`)
 	} catch (err) {
 		return console.log('Failed to connected to DB due to : ', err)
 	}
