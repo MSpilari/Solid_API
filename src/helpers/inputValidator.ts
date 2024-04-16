@@ -6,7 +6,9 @@ const inputValidator = (schema: Joi.ObjectSchema) => {
 		const userInput = req.body
 
 		try {
-			await schema.validateAsync(userInput)
+			await schema.validateAsync(userInput, {
+				errors: { wrap: { label: false } }
+			})
 
 			next()
 		} catch (error) {
